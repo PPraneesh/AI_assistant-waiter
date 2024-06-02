@@ -7,3 +7,5 @@ faiss-cpu
 langchain                    
 langchain-core               
 langchain-google-genai             
+langchain-community
+flask_cors
