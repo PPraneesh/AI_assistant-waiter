@@ -114,7 +114,7 @@ def book_table(hour :str)-> str:
     if(tables_baratie[str(current_hour)] == 0):
         return {'output_text': "Sorry, all tables are booked for this hour. Please choose another hour"}
     tables_baratie[str(current_hour)] -= 1
-    print(tables_baratie)
+    # print(tables_baratie)
     return {'output_text': f"Table booked successfully at {current_hour} for 1 hour. Enjoy your meal!"}
 
 def read_text_file(file_path):
@@ -140,12 +140,12 @@ def hello_world():
         user_question = data['data']['question']
         messages.append({'msg_type':'user','user_question':user_question})
         ai_msg= llm_with_tools.invoke(user_question)
-        print(ai_msg)
+        # print(ai_msg)
         for tool_call in ai_msg.tool_calls:
             selected_tool = {"user_input": user_input, "book_table": book_table}[tool_call["name"]]
             tool_output = selected_tool.invoke(tool_call["args"])
             # print(tool_output)
-            print(tool_output['output_text'])
+            # print(tool_output['output_text'])
             messages.append({'msg_type':'tool','tool_output':tool_output['output_text']})
         return {"messages":messages,"available_tables":tables_baratie}
     return {
