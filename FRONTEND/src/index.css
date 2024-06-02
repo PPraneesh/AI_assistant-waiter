@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+*{
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+p{
+    margin: 0.3rem;
+    font-size: 1rem;
+}
+::-webkit-scrollbar {
+    background: rgb(24, 32, 48);
+    border-radius: 100px;
+    height: 6px;
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(206, 210, 219);
+    border-radius: 100px;
+}
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: rgb(24, 32, 48);
+}
+
+body{
+    color: rgb(250, 250, 250);
+    background-color: rgb(14, 17, 23);
+}
+.app{
+    max-width: 46rem;
+    margin: 0 auto;
+    margin-top: 4rem;
+}
+form{
+    border: 1px solid rgba(250, 250, 250, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+input{
+    cursor: text;
+    width: -webkit-fill-available;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    background-color: #262730;
+    color: inherit;
+    border: 0;
+}
+input:focus{
+    outline: 2px solid rgba(0, 128, 0, 0.562);
+}
+button{
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    background-color: rgb(19, 23, 32);
+    color: inherit;
+    border: 1px solid rgba(250, 250, 250, 0.2);
+}
+.chat p{
+    font-size: 1.2em;
+}
+.user_msg{
+    text-align: right;
+}
+.label{
+    color:#ffffff6d;
+}
+.messages h2{
+    margin: 0;
+    margin-top: 2rem;
+}
+.table_data h2{
+    margin: 0;
+    margin-top: 2rem;
+}
+.available_tables{
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+}
+.table_time{
+    width: max-content;
+    padding: 0.5rem;
+}
+.tables{
+    width: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+.green_square{
+    background-color: green;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2px;
+    margin: 2px;
+}
+.red_square{
+    background-color: red;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2px;
+    margin: 2px;
+}
