@@ -17,7 +17,7 @@ from flask_cors import CORS
 load_dotenv()
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key="AIzaSyBztuwApikA49ibIGZzwBn-9G65BenkCiQ")
+llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_pdf_text(pdf_docs):
     text = ""
