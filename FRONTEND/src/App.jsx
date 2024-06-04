@@ -11,7 +11,7 @@ const [tableData, setTableData] = useState({});
       if (db) {
         setMessages(JSON.parse(db));
       }
-      axios.get("https://ai-assistant-waiter-backend.vercel.app/")
+      axios.get("http://127.0.0.1:5000/")
         .then((response) => {
         setTableData(response.data.available_tables);
         })
@@ -24,7 +24,7 @@ const [tableData, setTableData] = useState({});
 
   const onSubmit = (data,e) => {
     e.preventDefault();
-    axios.post("https://ai-assistant-waiter-backend.vercel.app/",data={data})
+    axios.post("http://127.0.0.1:5000/",data={data})
     .then((response)=>{
       localStorage.setItem("db", JSON.stringify(messages.concat(response.data.messages)));
       setMessages(messages.concat(response.data.messages));

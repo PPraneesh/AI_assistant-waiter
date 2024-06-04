@@ -4,4 +4,3 @@ include
 lib
 scripts
 pyvenv.cfg
-faiss_index

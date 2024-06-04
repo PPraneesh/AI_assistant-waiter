@@ -1,9 +1,8 @@
 from flask import Flask,request
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.messages import HumanMessage, ToolMessage
 from langchain_core.tools import tool
-from PyPDF2 import PdfReader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+# from PyPDF2 import PdfReader
+# from langchain.text_splitter import RecursiveCharacterTextSplitter
 import google.generativeai as genai
 from langchain_community.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
@@ -19,22 +18,21 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 llm = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=os.getenv("GOOGLE_API_KEY"))
 
-def get_pdf_text(pdf_docs):
-    text = ""
-    for pdf_doc in pdf_docs:
-        pdf_reader = PdfReader(pdf_doc)
-        for page in pdf_reader.pages:
-            text += page.extract_text()
-    return text
-def get_text_chunks(text):
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000)
-    chunks = text_splitter.split_text   (text)
-    return chunks
-
-def get_vectors_store(text_chunks):
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-    vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
-    vector_store.save_local("faiss_index")
+# def get_pdf_text(pdf_docs):
+#     text = ""
+#     for pdf_doc in pdf_docs:
+#         pdf_reader = PdfReader(pdf_doc)
+#         for page in pdf_reader.pages:
+#             text += page.extract_text()
+#     return text
+# def get_text_chunks(text):
+#     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000)
+#     chunks = text_splitter.split_text   (text)
+#     return chunks
+# def get_vectors_store(text_chunks):
+#     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+#     vector_store = FAISS.from_texts(text_chunks, embedding=embeddings)
+#     vector_store.save_local("faiss_index")
 
 def get_conversational_chain():
     prompt_template = """
@@ -122,9 +120,9 @@ def read_text_file(file_path):
         text = file.read()
     return text
 
-raw_text = read_text_file("baratie.txt")
-text_chunks = get_text_chunks(raw_text)
-get_vectors_store(text_chunks)
+# raw_text = read_text_file("baratie.txt")
+# text_chunks = get_text_chunks(raw_text)
+# get_vectors_store(text_chunks)
 
 tools=[user_input,book_table]
 llm_with_tools = llm.bind_tools(tools)
